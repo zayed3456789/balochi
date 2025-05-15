@@ -20,11 +20,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => {
   const content = (
     <div className={cn(
-      "bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl",
+      "backdrop-blur-sm bg-white/80 border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300",
       className
     )}>
       {image && (
-        <div className="h-48 overflow-hidden">
+        <div className="h-48 overflow-hidden border-b border-gray-200">
           <img 
             src={image} 
             alt={title} 
@@ -32,15 +32,15 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
           />
         </div>
       )}
-      <div className="p-6">
-        <h3 className="font-playfair text-xl font-bold mb-2 text-balochi-terracotta">{title}</h3>
-        <p className="text-gray-700 font-roboto">{description}</p>
+      <div className="p-4">
+        <h3 className="font-serif text-xl font-bold mb-2 text-gray-800 hover:text-blue-600">{title}</h3>
+        <p className="text-gray-700">{description}</p>
       </div>
     </div>
   );
 
   if (link) {
-    return <Link to={link}>{content}</Link>;
+    return <Link to={link} className="no-underline">{content}</Link>;
   }
 
   return content;

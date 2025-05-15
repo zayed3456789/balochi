@@ -16,28 +16,29 @@ const Hero: React.FC<HeroProps> = ({
   subtitle,
   ctaText,
   ctaLink,
-  backgroundImage = "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?auto=format&fit=crop"
+  backgroundImage
 }) => {
   return (
     <div 
-      className="relative py-24 sm:py-32 bg-cover bg-center animate-fade-in"
+      className="relative py-16 sm:py-20 bg-cover bg-center animate-fade-in"
       style={{ 
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(${backgroundImage})` 
+        backgroundImage: backgroundImage ? `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(${backgroundImage})` : 'none',
+        backgroundColor: backgroundImage ? 'transparent' : 'white'
       }}
     >
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto text-center text-white">
-          <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        <div className="max-w-4xl mx-auto backdrop-blur-sm bg-white/70 border border-gray-200 p-8 rounded shadow-sm">
+          <h1 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-gray-800">
             {title}
           </h1>
-          <p className="font-roboto text-xl md:text-2xl mb-8 text-white/90">
+          <p className="text-lg mb-6 text-gray-700">
             {subtitle}
           </p>
           {ctaText && ctaLink && (
             <Button
               asChild
-              size="lg"
-              className="bg-balochi-blue hover:bg-balochi-blue/90 text-white"
+              size="sm"
+              className="bg-blue-600 hover:bg-blue-700 text-white"
             >
               <Link to={ctaLink}>{ctaText}</Link>
             </Button>
